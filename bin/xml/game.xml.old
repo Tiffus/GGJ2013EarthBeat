@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<game id="1">
+		<config>
+			<param id="planetY">1200</param>
+			<param id="characterPosition">-1665</param>
+			<param id="rayonMaxWave">1069</param>
+			<param id="red">0xFF0000</param>
+			<param id="colorred">0x00FF00</param>
+			<param id="yellow">0xFFFF00</param>
+			<param id="yellow">0x0000FF</param>
+		</config>
+		<levels>
+			<level id="0">
+				<wave id="0" time="2" speed="10" color="red" input="" sound=""></wave>
+				<wave id="1" time="3" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="2" time="4" speed="10" color="red" input="" sound=""></wave>
+				<wave id="3" time="6" speed="10" color="red" input="" sound=""></wave>
+				<wave id="4" time="7" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="5" time="9" speed="10" color="red" input="" sound=""></wave>
+				<wave id="6" time="10" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="7" time="11" speed="10" color="red" input="" sound=""></wave>
+				<wave id="8" time="13" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="9" time="14" speed="10" color="red" input="" sound=""></wave>
+				<wave id="10" time="15" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="11" time="17" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="12" time="18" speed="10" color="red" input="" sound=""></wave>
+				<wave id="13" time="19" speed="10" color="red" input="" sound=""></wave>
+				<wave id="14" time="20" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="15" time="22" speed="10" color="red" input="" sound=""></wave>
+				<wave id="16" time="23" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="17" time="24" speed="10" color="red" input="" sound=""></wave>
+				<wave id="18" time="26" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="19" time="27" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="4" type="1" fileName="fire.png" position="80"/>
+				<obstacle id="5" type="1" fileName="fire.png" position="90"/>
+				<obstacle id="6" type="1" fileName="fire.png" position="100"/>
+				<obstacle id="7" type="1" fileName="fire.png" position="110"/>
+				<obstacle id="8" type="1" fileName="fire.png" position="200"/>
+				<obstacle id="9" type="1" fileName="fire.png" position="300"/>
+			</level>
+			<level id="1">
+				<wave id="0" time="2" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="1" time="3" speed="10" color="red" input="" sound=""></wave>
+				<wave id="2" time="4" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="0" type="fire" fileName="fire.png" position=""/>
+				<wave id="3" time="6" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="4" time="7" speed="10" color="red" input="" sound=""></wave>
+				<wave id="5" time="9" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="6" time="10" speed="10" color="red" input="" sound=""></wave>
+				<wave id="7" time="11" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="2" type="fire" fileName="fire.png" position=""/>
+				<wave id="8" time="13" speed="10" color="red" input="" sound=""></wave>
+				<wave id="9" time="14" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="10" time="15" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="3" type="fire" fileName="fire.png" position=""/>
+				<wave id="11" time="17" speed="10" color="red" input="" sound=""></wave>
+				<wave id="12" time="18" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="13" time="19" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="14" time="20" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="4" type="fire" fileName="fire.png" position=""/>
+				<wave id="15" time="22" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="16" time="23" speed="10" color="red" input="" sound=""></wave>
+				<wave id="17" time="24" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="5" type="fire" fileName="fire.png" position=""/>
+				<wave id="18" time="26" speed="10" color="red" input="" sound=""></wave>
+				<wave id="19" time="27" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="6" type="fire" fileName="fire.png" position=""/>
+			</level>
+			<level id="2">
+				<wave id="0" time="2" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="1" time="3" speed="10" color="red" input="" sound=""></wave>
+				<wave id="2" time="4" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="0" type="quicksand" fileName="quicksand.png" position=""/>
+				<wave id="3" time="6" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="4" time="7" speed="10" color="red" input="" sound=""></wave>
+				<wave id="5" time="9" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="6" time="10" speed="10" color="red" input="" sound=""></wave>
+				<wave id="7" time="11" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="2" type="quicksand" fileName="quicksand.png" position=""/>
+				<wave id="8" time="13" speed="10" color="red" input="" sound=""></wave>
+				<wave id="9" time="14" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="10" time="15" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="3" type="quicksand" fileName="quicksand.png" position=""/>
+				<wave id="11" time="17" speed="10" color="red" input="" sound=""></wave>
+				<wave id="12" time="18" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="13" time="19" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="14" time="20" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="4" type="quicksand" fileName="quicksand.png" position=""/>
+				<wave id="15" time="22" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="16" time="23" speed="10" color="red" input="" sound=""></wave>
+				<wave id="17" time="24" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="5" type="quicksand" fileName="quicksand.png" position=""/>
+				<wave id="18" time="26" speed="10" color="red" input="" sound=""></wave>
+				<wave id="19" time="27" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="6" type="quicksand" fileName="quicksand.png" position=""/>
+			</level>
+			<level id="3">
+				<wave id="0" time="2" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="1" time="3" speed="10" color="red" input="" sound=""></wave>
+				<wave id="2" time="4" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="0" type="fire" fileName="fire.png" position=""/>
+				<wave id="3" time="6" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="4" time="7" speed="10" color="red" input="" sound=""></wave>
+				<wave id="5" time="9" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="6" time="10" speed="10" color="red" input="" sound=""></wave>
+				<wave id="7" time="11" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="2" type="fire" fileName="fire.png" position=""/>
+				<wave id="8" time="13" speed="10" color="red" input="" sound=""></wave>
+				<wave id="9" time="14" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="10" time="15" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="3" type="fire" fileName="fire.png" position=""/>
+				<wave id="11" time="17" speed="10" color="red" input="" sound=""></wave>
+				<wave id="12" time="18" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="13" time="19" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="14" time="20" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="4" type="fire" fileName="fire.png" position=""/>
+				<wave id="15" time="22" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="16" time="23" speed="10" color="red" input="" sound=""></wave>
+				<wave id="17" time="24" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="5" type="fire" fileName="fire.png" position=""/>
+				<wave id="18" time="26" speed="10" color="red" input="" sound=""></wave>
+				<wave id="19" time="27" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="6" type="fire" fileName="fire.png" position=""/>
+			</level>
+			<level id="4">
+				<wave id="0" time="2" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="1" time="3" speed="10" color="red" input="" sound=""></wave>
+				<wave id="2" time="4" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="0" type="fire" fileName="fire.png" position=""/>
+				<wave id="3" time="6" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="4" time="7" speed="10" color="red" input="" sound=""></wave>
+				<wave id="5" time="9" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="6" time="10" speed="10" color="red" input="" sound=""></wave>
+				<wave id="7" time="11" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="2" type="fire" fileName="fire.png" position=""/>
+				<wave id="8" time="13" speed="10" color="red" input="" sound=""></wave>
+				<wave id="9" time="14" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="10" time="15" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="3" type="fire" fileName="fire.png" position=""/>
+				<wave id="11" time="17" speed="10" color="red" input="" sound=""></wave>
+				<wave id="12" time="18" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="13" time="19" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="14" time="20" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="4" type="fire" fileName="fire.png" position=""/>
+				<wave id="15" time="22" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="16" time="23" speed="10" color="red" input="" sound=""></wave>
+				<wave id="17" time="24" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="5" type="fire" fileName="fire.png" position=""/>
+				<wave id="18" time="26" speed="10" color="red" input="" sound=""></wave>
+				<wave id="19" time="27" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="6" type="fire" fileName="fire.png" position=""/>
+			</level>
+			<level id="5">
+				<wave id="0" time="2" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="1" time="3" speed="10" color="red" input="" sound=""></wave>
+				<wave id="2" time="4" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="0" type="fire" fileName="fire.png" position=""/>
+				<wave id="3" time="6" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="4" time="7" speed="10" color="red" input="" sound=""></wave>
+				<wave id="5" time="9" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="6" time="10" speed="10" color="red" input="" sound=""></wave>
+				<wave id="7" time="11" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="2" type="fire" fileName="fire.png" position=""/>
+				<wave id="8" time="13" speed="10" color="red" input="" sound=""></wave>
+				<wave id="9" time="14" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="10" time="15" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="3" type="fire" fileName="fire.png" position=""/>
+				<wave id="11" time="17" speed="10" color="red" input="" sound=""></wave>
+				<wave id="12" time="18" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="13" time="19" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="14" time="20" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="4" type="fire" fileName="fire.png" position=""/>
+				<wave id="15" time="22" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="16" time="23" speed="10" color="red" input="" sound=""></wave>
+				<wave id="17" time="24" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="5" type="fire" fileName="fire.png" position=""/>
+				<wave id="18" time="26" speed="10" color="red" input="" sound=""></wave>
+				<wave id="19" time="27" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="6" type="fire" fileName="fire.png" position=""/>
+			</level>
+			<level id="6">
+				<wave id="0" time="2" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="1" time="3" speed="10" color="red" input="" sound=""></wave>
+				<wave id="2" time="4" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="0" type="slime" fileName="slime.png" position=""/>
+				<wave id="3" time="6" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="4" time="7" speed="10" color="red" input="" sound=""></wave>
+				<wave id="5" time="9" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="6" time="10" speed="10" color="red" input="" sound=""></wave>
+				<wave id="7" time="11" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="2" type="slime" fileName="slime.png" position=""/>
+				<wave id="8" time="13" speed="10" color="red" input="" sound=""></wave>
+				<wave id="9" time="14" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="10" time="15" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="3" type="slime" fileName="slime.png" position=""/>
+				<wave id="11" time="17" speed="10" color="red" input="" sound=""></wave>
+				<wave id="12" time="18" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="13" time="19" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="14" time="20" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="4" type="slime" fileName="slime.png" position=""/>
+				<wave id="15" time="22" speed="10" color="yellow" input="" sound=""></wave>
+				<wave id="16" time="23" speed="10" color="red" input="" sound=""></wave>
+				<wave id="17" time="24" speed="10" color="yellow" input="" sound=""></wave>
+				<obstacle id="5" type="slime" fileName="slime.png" position=""/>
+				<wave id="18" time="26" speed="10" color="red" input="" sound=""></wave>
+				<wave id="19" time="27" speed="10" color="red" input="" sound=""></wave>
+				<obstacle id="6" type="slime" fileName="slime.png" position=""/>
+			</level>
+		</levels>
+	</game>
+</data>

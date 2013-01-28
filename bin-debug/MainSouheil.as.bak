@@ -1,0 +1,35 @@
+package
+{
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
+	import flash.events.Event;
+	import starling.core.Starling;
+	
+	/**
+	 * ...
+	 * @author Tiffus mailto : el.tiffus@gmail.com
+	 */
+	public class MainSouheil extends Sprite
+	{
+		
+		public function Main():void
+		{
+			addEventListener(Event.ADDED_TO_STAGE, init);
+		}
+		
+		private function init(e:Event = null):void
+		{
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.align = StageAlign.TOP_LEFT;
+			
+			var starling:Starling = new Starling(Game, stage);
+			starling.start();
+			trace("toto");
+		}
+	
+	}
+
+}
