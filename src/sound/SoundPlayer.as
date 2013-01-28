@@ -10,8 +10,8 @@ package sound
 	 */
 	public class SoundPlayer
 	{
-		private static const VolumeAmbiance:Number = 0.01;
-		private static const VolumeVoice:Number = 0.01;
+		private static const VolumeAmbiance:Number = 0.02;
+		private static const VolumeVoice:Number = 0.05;
 		
 		[Embed(source="../../assets/sounds/Ambiance/Hearth_Desert.mp3")]
 		private static const AmbianceDesert:Class;
@@ -86,20 +86,12 @@ package sound
 		private static const VoicesGranMa:Array = new Array(VoiceGranMa1, VoiceGranMa2);
 		private static const Voices:Array = new Array(VoiceBoy1, VoiceBoy2, VoiceGirl1, VoiceGirl2, VoiceDad1, VoiceDad2, VoiceMom1, VoiceMom2, VoiceGranPa1, VoiceGranPa2, VoiceGranMa1, VoiceGranMa2);
 		
-		[Embed(source="../../assets/sounds/Heartbeats/heartbeatH.mp3")]
-		private static const HeartBeatH:Class;
-		
-		[Embed(source="../../assets/sounds/Heartbeats/heartbeatL.mp3")]
-		private static const HeartBeatL:Class;
-		
 		[Embed(source="../../assets/sounds/Heartbeats/heartbeat2.mp3")]
 		private static const HeartBeat2:Class;
 		
 		static private var ambiance:Sound;
 		static private var ambianceChannel:SoundChannel;
 		static private var heartBeat2:Sound;
-		static private var heartBeatL:Sound;
-		static private var heartBeatH:Sound;
 		
 		/**
 		 * stoppe la musique d'ambiance.
@@ -235,25 +227,6 @@ package sound
 		private static function play0(c:Class):void
 		{
 			(new c as Sound).play(0, 0, new SoundTransform(VolumeVoice, 0));
-		}
-		
-		/**
-		 * joue uniquement le 1er ventricule.
-		 */
-		public static function playVentriculeFort():void
-		{
-			heartBeatH = new HeartBeatH() as Sound;
-			heartBeatH.play();
-		}
-		
-		/**
-		 * joue uniquement le 2nd ventricule.
-		 */
-		
-		public static function playVentriculeFaible():void
-		{
-			heartBeatL = new HeartBeatL() as Sound;
-			heartBeatL.play();
 		}
 		
 		/**

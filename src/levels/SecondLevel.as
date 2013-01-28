@@ -32,16 +32,12 @@ package levels
 			super._onXMLLevelLoaded(e);
 			
 			//Text
-			var text:TextField = new TextField(200, 50, "Fear", "Verdana", 36, 0xFFFFFF);
-			text.alpha = 0.5;
-			text.x = text.y = 10;
-			addChild(text);
+			_makeText("Fear");
 		}
 		
-		override protected function onFinishHide():void
+		override protected function _onFinishHide():void
 		{
 			var event:SceneChangeEvent = new SceneChangeEvent(SceneChangeEvent.CHANGE);
-			//event.nextSceneName = GlobalContent.SCREEN_TITLE;
 			event.nextSceneName = GlobalContent.SCREEN_THIRD;
 			dispatchEvent(event);
 		}

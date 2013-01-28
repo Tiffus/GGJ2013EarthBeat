@@ -42,7 +42,7 @@ package objects.enemy
 		{
 			super.render(support, parentAlpha);
 			
-			if (_mc.currentFrame < 20 || _mc.currentFrame > 50)
+			if (_mc.currentFrame < 60 || _mc.currentFrame > 140)
 			{
 				active = false;
 			}

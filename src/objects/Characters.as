@@ -21,7 +21,6 @@ package objects
 	 */
 	public class Characters extends Sprite
 	{
-		private var _vectChar:Vector.<AbstractChar>;
 		private var mom:AbstractChar;
 		private var dad:AbstractChar;
 		private var daughter:AbstractChar;
@@ -34,6 +33,8 @@ package objects
 		private var charactersNumber:int = 6;
 		private var isKilling:Boolean;
 		private var fond:Quad;
+		private var areMoving:Boolean;
+		private var _vectChar:Vector.<AbstractChar>;
 		
 		public function Characters()
 		{
@@ -42,13 +43,9 @@ package objects
 		
 		private function _onAddedToStage(e:Event):void
 		{
-			fond = new Quad(this.width, this.height, 0xFF);
-			addChildAt(fond, 0);
-			
-			this.rotation = deg2rad(-10);
-			
 			removeEventListener(Event.ADDED_TO_STAGE, _onAddedToStage);
 			
+			//CHARACTERS
 			mom = new Char1();
 			dad = new Char2();
 			daughter = new Char3();
@@ -56,35 +53,40 @@ package objects
 			grandpa = new Char5();
 			grandma = new Char6();
 			
-			vectChar = new Vector.<AbstractChar>;
-			vectChar.push(mom, dad, daughter, son, grandpa, grandma);
-			vectChar.fixed = true;
+			//VECTEUR CHARACTERS
+			_vectChar = new Vector.<AbstractChar>;
+			_vectChar.push(mom, dad, daughter, son, grandpa, grandma);
+			_vectChar.fixed = true;
 			
-			GlobalContent.vectCharacters = vectChar;
+			GlobalContent.vectCharacters = _vectChar;
 			
+			//PLACEMENT
 			decalage = 0;
 			
-			for each (var c:AbstractChar in vectChar)
+			for each (var c:AbstractChar in _vectChar)
 			{
 				c.rotation -= deg2rad(decalage);
 				decalage += DEFAULT_DECALAGE_CHARACTERS;
 				
 				addChild(c);
 			}
+			
+			this.rotation = deg2rad(-10);
 		
 		}
 		
+		/**
+		 * Lorsque le groupe est touché on tue un des personnage en partant de la fin
+		 */
 		public function killCharacter():void
 		{
 			
 			if (!isKilling)
 			{
-				trace("isKilling : " + isKilling);
 				isKilling = true;
 				charactersNumber > 0 ? charactersNumber-- : charactersNumber = 0;
 				
-				trace("charactersNumber : " + charactersNumber);
-				TweenMax.to(GlobalContent.vectCharacters[charactersNumber].container, 2, {rotation: 3, alpha: 0, onComplete: function():void
+				TweenMax.to(_vectChar[charactersNumber].container, 2, {rotation: 3, alpha: 0, onComplete: function():void
 					{
 						GlobalContent.vectCharacters[charactersNumber].dead = true;
 						
@@ -127,6 +129,32 @@ package objects
 				}
 			}
 		
+		}
+		
+		public function startAnimation():void
+		{
+			if (!areMoving)
+			{
+				areMoving = true;
+				
+				for each (var c:AbstractChar in _vectChar)
+				{
+					c.startAnimation();
+				}
+			}
+		}
+		
+		public function stopAnimation():void
+		{
+			if (areMoving)
+			{
+				areMoving = false;
+				
+				for each (var c:AbstractChar in _vectChar)
+				{
+					c.stopAnimation();
+				}
+			}
 		}
 		
 		public function get vectChar():Vector.<AbstractChar>

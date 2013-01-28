@@ -5,6 +5,8 @@ package levels
 	import starling.events.Event;
 	import starling.text.TextField;
 	import starling.textures.Texture;
+	import starling.utils.HAlign;
+	import starling.utils.VAlign;
 	
 	/**
 	 * ...
@@ -32,16 +34,15 @@ package levels
 			super._onXMLLevelLoaded(e);
 			
 			//Text
-			var text:TextField = new TextField(200, 50, "Anger", "Verdana", 36, 0xFFFFFF);
-			text.alpha = 0.5;
-			text.x = text.y = 10;
-			addChild(text);
+			
+			_makeText("Anger");
 		}
 		
-		override protected function onFinishHide():void
+		
+		
+		override protected function _onFinishHide():void
 		{
 			var event:SceneChangeEvent = new SceneChangeEvent(SceneChangeEvent.CHANGE);
-			//event.nextSceneName = GlobalContent.SCREEN_TITLE;
 			event.nextSceneName = GlobalContent.SCREEN_SECOND;
 			dispatchEvent(event);
 		}

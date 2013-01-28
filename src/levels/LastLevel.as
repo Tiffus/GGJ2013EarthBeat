@@ -4,7 +4,6 @@ package levels
 	import events.SceneChangeEvent;
 	import objects.Core;
 	import starling.events.Event;
-	import starling.text.TextField;
 	import starling.textures.Texture;
 	
 	/**
@@ -33,10 +32,7 @@ package levels
 			super._onXMLLevelLoaded(e);
 			
 			//Text
-			var text:TextField = new TextField(200, 50, "Love !", "Verdana", 36, 0xFFFFFF);
-			text.alpha = 0.5;
-			text.x = text.y = 10;
-			addChild(text);
+			_makeText("Love !");
 			
 			var core:Core = new Core();
 			core.x = 512;
@@ -44,11 +40,10 @@ package levels
 			addChild(core);
 		}
 		
-		override protected function onFinishHide():void
+		override protected function _onFinishHide():void
 		{
 			var event:SceneChangeEvent = new SceneChangeEvent(SceneChangeEvent.CHANGE);
 			event.nextSceneName = GlobalContent.SCREEN_WIN;
-			//event.nextSceneName = GlobalContent.SCREEN_TITLE;
 			dispatchEvent(event);
 		}
 	

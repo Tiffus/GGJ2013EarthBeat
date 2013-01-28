@@ -27,7 +27,6 @@ package objects.characters
 			var textureAtlas:TextureAtlas = new TextureAtlas(texture, XMLData);
 			 _mc = new MovieClip(textureAtlas.getTextures("SonAnim"), 20);
 			addChild(_mc);
-			Starling.juggler.add(_mc);
 			
 			_container = new Sprite();
 			_container.addChild(_mc);

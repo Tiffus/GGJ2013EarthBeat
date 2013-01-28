@@ -24,9 +24,9 @@ package objects.ondes
 		private var _toDestroy:Boolean;
 		private var _event:OndeEvent;
 		private var _stateLigne:int = 0; //0: avant perso, 1:sur perso, 2 apres perso
-		private var ondeGraphic:Image;
 		private var _playerHit:Boolean = false;
-		private var texture:Texture;
+		private var _ondeGraphic:Image;
+		private var _texture:Texture;
 		
 		public function OndePNG(id:Number, time:Number, speed:Number, color:String, sound:String)
 		{
@@ -44,11 +44,11 @@ package objects.ondes
 		private function _onRemoveFromStage(e:Event):void
 		{
 			removeEventListener(Event.REMOVED_FROM_STAGE, _onRemoveFromStage);
-			texture.dispose();
-			texture = null;
+			_texture.dispose();
+			_texture = null;
 			
-			removeChild(ondeGraphic);
-			ondeGraphic = null;
+			removeChild(_ondeGraphic);
+			_ondeGraphic = null;
 		}
 		
 		private function _init(e:Event):void
@@ -59,20 +59,20 @@ package objects.ondes
 			{
 				
 				case GlobalContent.BLEU: 
-					texture = Texture.fromBitmap(new Assets.BlueRays() as Bitmap);
+					_texture = Texture.fromBitmap(new Assets.BlueRays() as Bitmap);
 					break;
 				case GlobalContent.BLANC: 
-					texture = Texture.fromBitmap(new Assets.WhiteRays() as Bitmap);
+					_texture = Texture.fromBitmap(new Assets.WhiteRays() as Bitmap);
 					break;
 				default: 
-					texture = Texture.fromBitmap(new Assets.BlueRays());
+					_texture = Texture.fromBitmap(new Assets.BlueRays());
 			}
 			
-			ondeGraphic = new Image(texture);
-			ondeGraphic.x = ondeGraphic.y = -1500;
-			ondeGraphic.width = ondeGraphic.height = 3000;
-			scaleX = scaleY = 0;
-			addChild(ondeGraphic);
+			_ondeGraphic = new Image(_texture);
+			_ondeGraphic.width = _ondeGraphic.height = 3000;
+			_ondeGraphic.x = _ondeGraphic.y = -_ondeGraphic.width >> 1;
+			scaleX = scaleY = 0.2;
+			addChild(_ondeGraphic);
 		}
 		
 		public function destroy():void
@@ -83,8 +83,15 @@ package objects.ondes
 			}
 			
 			Starling.juggler.removeTweens(this);
-			this.scaleX = this.scaleY = 0;
 		
+		}
+		
+		public function reinit():void
+		{
+			scaleX = scaleY = 0.2;
+			_toDestroy = false;
+			stateLigne = 0;
+			alpha = 1;
 		}
 		
 		public function animate():void
@@ -99,6 +106,7 @@ package objects.ondes
 			if (GlobalContent.RAYON_MAX_WAVE * scaleX > 640)
 			{
 				stateLigne = 2;
+				this.alpha -= 0.02;
 			}
 			
 			if (GlobalContent.RAYON_MAX_WAVE * scaleX > 530 && stateLigne == 0)
@@ -167,17 +175,7 @@ package objects.ondes
 		
 		public function toString():String
 		{
-			return "";
 			return "Wave id:" + id + " s:" + speed + " c:" + color;
-		}
-		
-		public function reinit():void
-		{
-			scaleX = 0;
-			scaleY = 0;
-			_toDestroy = false;
-			stateLigne = 0;
-		
 		}
 	
 	}

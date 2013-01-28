@@ -19,8 +19,11 @@ package levels
 	import starling.core.Starling;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.text.TextField;
 	import starling.textures.Texture;
+	import starling.utils.HAlign;
 	import starling.utils.rad2deg;
+	import starling.utils.VAlign;
 	
 	/**
 	 * ...
@@ -29,7 +32,7 @@ package levels
 	public class AbstractLevel extends Sprite
 	{
 		
-		private var hitPlayer:Boolean = false;
+		private var isMoving:Boolean = false;
 		static public const LEVELLOADER_LOADED:String = "levelloaderLoaded";
 		static private const FORWARD_DEFAULT_ANGLE:Number = 10;
 		
@@ -46,104 +49,13 @@ package levels
 		private var nbFrameAvance:int = 30;
 		protected var _texture:Texture;
 		
-		private var dernierPassage:Boolean = false;
+		private var animationFinNiveau:Boolean = false;
 		private var fixFinised:Boolean = false;
 		protected var _textureBG:Texture;
 		
 		public function AbstractLevel()
 		{
 			addEventListener(Event.ADDED_TO_STAGE, _init);
-			addEventListener(Event.REMOVED_FROM_STAGE, _onRemovedFromStage);
-		}
-		
-		private function _onRemovedFromStage(e:Event):void
-		{
-			removeEventListener(Event.REMOVED_FROM_STAGE, _onRemovedFromStage);
-			
-			if (Starling.current.nativeStage.hasEventListener(KeyboardEvent.KEY_UP))
-			{
-				Starling.current.nativeStage.removeEventListener(KeyboardEvent.KEY_UP, _onKeyUp);
-			}
-			_texture.dispose();
-			_bg.destroy();
-			ondeGenerator.destroy();
-		
-		}
-		
-		private function _onGameOver(e:GameEvent = null):void
-		{
-			trace("Game._onGameOver > e : " + e);
-			
-			TweenMax.to(this, 0.5, {alpha: 0, onComplete: onFinishHideGameOver})
-		
-		}
-		
-		private function onFinishHideGameOver():void
-		{
-			var event:SceneChangeEvent = new SceneChangeEvent(SceneChangeEvent.CHANGE);
-			event.nextSceneName = GlobalContent.SCREEN_LOSE;
-			dispatchEvent(event);
-		}
-		
-		private function _onGameWin(e:GameEvent = null):void
-		{
-			trace("Game._onGameOver > e : " + e);
-			
-			TweenMax.to(this, 0.5, {alpha: 0, onComplete: onFinishHide})
-		
-		}
-		
-		protected function onFinishHide():void
-		{
-		
-		}
-		
-		private function _onTouchCharacter(e:OndeEvent):void
-		{
-			SoundPlayer.playBattementComplet();
-		
-		}
-		
-		/////////////////////////////////////////////////////////////////////
-		// KEYS
-		/////////////////////////////////////////////////////////////////////
-		private function _onKeyUp(e:KeyboardEvent):void
-		{
-			
-			if (e.keyCode == Keyboard.S)
-			{
-				// bleu
-				_feedback.activate(GlobalContent.BLEU);
-				if (GlobalContent.currentOnde != null && !GlobalContent.currentOnde.playerHit && GlobalContent.currentOnde.color == "yellow" && GlobalContent.currentOnde.stateLigne == 1)
-				{
-					GlobalContent.currentOnde.playerHit = true;
-					_moveForward();
-				}
-			}
-			
-			if (e.keyCode == Keyboard.L)
-			{
-				// blanche
-				_feedback.activate(GlobalContent.BLANC);
-				if (GlobalContent.currentOnde != null && !GlobalContent.currentOnde.playerHit && GlobalContent.currentOnde.color == "red" && GlobalContent.currentOnde.stateLigne == 1)
-				{
-					GlobalContent.currentOnde.playerHit = true;
-					_moveForward();
-				}
-			}
-		}
-		
-		/////////////////////////////////////////////////////////////////////
-		// MOUVEMENT
-		/////////////////////////////////////////////////////////////////////
-		
-		private function _moveForward():void
-		{
-			
-			hitPlayer = true;
-			
-			SoundPlayer.playVoice();
-		
 		}
 		
 		protected function _init(e:Event):void
@@ -151,6 +63,7 @@ package levels
 			trace("FirstLevel._init > e : " + e);
 			removeEventListener(Event.ADDED_TO_STAGE, _init);
 			
+			addEventListener(Event.REMOVED_FROM_STAGE, _onRemovedFromStage);
 			GlobalContent.levelLoader.addEventListener(LoadLevelDesign.LOADLEVELFINISH, _onXMLLevelLoaded);
 		
 		}
@@ -160,7 +73,7 @@ package levels
 			GlobalContent.levelLoader.removeEventListener(LoadLevelDesign.LOADLEVELFINISH, _onXMLLevelLoaded);
 			
 			trace("FirstLevel._onXMLLevelLoaded > e : " + e);
-			
+			//BG
 			_bg = new Background(_textureBG);
 			addChild(_bg);
 			
@@ -178,21 +91,80 @@ package levels
 			_characters.y = planet.y;
 			addChild(_characters);
 			
-			//OndePNGGenerato
+			//ONDEPNGGENERATOR
 			ondeGenerator = new OndePNGCreator();
 			ondeGenerator.x = planet.x;
 			ondeGenerator.y = planet.y;
 			addChild(ondeGenerator);
 			
-			_characters.addEventListener(GameEvent.GAME_OVER, _onGameOver);
-			
+			//Feedback
 			_feedback = new FeedBack();
 			_feedback.alpha = 0;
 			addChild(_feedback);
 			
 			//Key listener
+			_characters.addEventListener(GameEvent.GAME_OVER, _onGameOver);
 			Starling.current.nativeStage.addEventListener(KeyboardEvent.KEY_UP, _onKeyUp);
 			Starling.current.addEventListener(OndeEvent.TOUCH_CHARACTER, _onTouchCharacter);
+		}
+		
+		protected function _makeText(string:String):void
+		{
+			var text:TextField = new TextField(200, 50, string, "Verdana", 36, 0xFFFFFF);
+			text.hAlign = HAlign.LEFT;
+			text.vAlign = VAlign.TOP
+			
+			text.alpha = 0.5;
+			text.x = text.y = 10;
+			addChild(text);
+		}
+		
+		/////////////////////////////////////////////////////////////////////
+		// KEYS
+		/////////////////////////////////////////////////////////////////////
+		private function _onKeyUp(e:KeyboardEvent):void
+		{
+			// BLEU
+			if (e.keyCode == Keyboard.S)
+			{
+				
+				_feedback.activate(GlobalContent.BLEU);
+				if (GlobalContent.currentOnde != null && !GlobalContent.currentOnde.playerHit && GlobalContent.currentOnde.color == "yellow" && GlobalContent.currentOnde.stateLigne == 1)
+				{
+					GlobalContent.currentOnde.playerHit = true;
+					_moveForward();
+				}
+			}
+			
+			// BLANCHE
+			if (e.keyCode == Keyboard.L)
+			{
+				
+				_feedback.activate(GlobalContent.BLANC);
+				if (GlobalContent.currentOnde != null && !GlobalContent.currentOnde.playerHit && GlobalContent.currentOnde.color == "red" && GlobalContent.currentOnde.stateLigne == 1)
+				{
+					GlobalContent.currentOnde.playerHit = true;
+					_moveForward();
+				}
+			}
+		}
+		
+		/////////////////////////////////////////////////////////////////////
+		// MOUVEMENT
+		/////////////////////////////////////////////////////////////////////
+		private function _moveForward():void
+		{
+			
+			isMoving = true;
+			
+			SoundPlayer.playVoice();
+		
+		}
+		
+		private function _onTouchCharacter(e:OndeEvent):void
+		{
+			SoundPlayer.playBattementComplet();
+		
 		}
 		
 		/////////////////////////////////////////////////////////////////////
@@ -202,12 +174,47 @@ package levels
 		{
 			super.render(support, parentAlpha);
 			
-			if (planet)
+			_detectionFinNiveau();
+			_mouvement();
+			_detectionCollision();
+		
+		}
+		
+		private function _mouvement():void
+		{
+			if (isMoving)
 			{
+				_characters.startAnimation();
+				rotationComputation = planet.rotation;
+				rotationComputation -= Math.PI / 360;
+				
 				planet.rotation = rotationComputation;
+				currentNbFrame++;
+				
+				if (rad2deg(planet.rotation) > 0 && rad2deg(planet.rotation) < 10)
+				{
+					planet.rotation = 0;
+					Starling.current.nativeStage.removeEventListener(KeyboardEvent.KEY_UP, _onKeyUp);
+					Starling.current.removeEventListener(OndeEvent.TOUCH_CHARACTER, _onTouchCharacter);
+					
+					animationFinNiveau = true;
+					currentNbFrame = 0;
+					
+				}
+				
+				if (currentNbFrame == nbFrameAvance)
+				{
+					isMoving = false;
+					_characters.stopAnimation();
+					currentNbFrame = 0;
+				}
 			}
-			
-			if (dernierPassage)
+		}
+		
+		private function _detectionFinNiveau():void
+		{
+			//FIN DU NIVEAU
+			if (animationFinNiveau)
 			{
 				if (currentNbFrame == 0)
 				{
@@ -223,34 +230,13 @@ package levels
 				if (currentNbFrame > 20 && !fixFinised)
 				{
 					fixFinised = true;
-					TweenMax.to(this, 1, {alpha: 0, onComplete: _onGameWin});
+					Starling.juggler.tween(this, 1, {alpha: 0, onComplete: _onGameWin});
 				}
 			}
-			
-			if (hitPlayer)
-			{
-				rotationComputation = planet.rotation;
-				rotationComputation -= Math.PI / 360;
-				
-				planet.rotation = rotationComputation;
-				currentNbFrame++;
-				if (currentNbFrame == nbFrameAvance)
-				{
-					hitPlayer = false;
-					currentNbFrame = 0;
-				}
-				
-				if (rad2deg(planet.rotation) > 0 && rad2deg(planet.rotation) < 10)
-				{
-					planet.rotation = 0;
-					Starling.current.nativeStage.removeEventListener(KeyboardEvent.KEY_UP, _onKeyUp);
-					Starling.current.removeEventListener(OndeEvent.TOUCH_CHARACTER, _onTouchCharacter);
-					
-					dernierPassage = true;
-					currentNbFrame = 0;
-					
-				}
-			}
+		}
+		
+		private function _detectionCollision():void
+		{
 			var collidingEnemy:AbstractEnemy;
 			var characterDead:Boolean;
 			
@@ -265,6 +251,7 @@ package levels
 							trace("-------------------INACTIVATE BY LOOSING " + e.toString() + " " + c);
 							characterDead = true;
 							collidingEnemy = e;
+							
 							
 						}
 						
@@ -285,8 +272,60 @@ package levels
 			
 			if (characterDead)
 			{
-				_characters.killCharacter();
+				GlobalContent.FXshake(this, _characters.killCharacter);
 			}
+		}
+		
+		/////////////////////////////////////////////////////////////////////
+		// GAME OVER
+		/////////////////////////////////////////////////////////////////////
+		private function _onGameOver(e:GameEvent = null):void
+		{
+			trace("Game._onGameOver > e : " + e);
+			
+			TweenMax.to(this, 0.5, {alpha: 0, onComplete: _onFinishHideGameOver})
+		
+		}
+		
+		private function _onFinishHideGameOver():void
+		{
+			var event:SceneChangeEvent = new SceneChangeEvent(SceneChangeEvent.CHANGE);
+			event.nextSceneName = GlobalContent.SCREEN_LOSE;
+			dispatchEvent(event);
+		}
+		
+		/////////////////////////////////////////////////////////////////////
+		// GAME WIN
+		/////////////////////////////////////////////////////////////////////
+		private function _onGameWin(e:GameEvent = null):void
+		{
+			trace("Game._onGameOver > e : " + e);
+			
+			TweenMax.to(this, 0.5, {alpha: 0, onComplete: _onFinishHide})
+		
+		}
+		
+		protected function _onFinishHide():void
+		{
+		
+		}
+		
+		/////////////////////////////////////////////////////////////////////
+		// REMOVED FROM STAGE
+		/////////////////////////////////////////////////////////////////////
+		
+		private function _onRemovedFromStage(e:Event):void
+		{
+			removeEventListener(Event.REMOVED_FROM_STAGE, _onRemovedFromStage);
+			
+			if (Starling.current.nativeStage.hasEventListener(KeyboardEvent.KEY_UP))
+			{
+				Starling.current.nativeStage.removeEventListener(KeyboardEvent.KEY_UP, _onKeyUp);
+			}
+			_texture.dispose();
+			_bg.destroy();
+			ondeGenerator.destroy();
+		
 		}
 	
 	}

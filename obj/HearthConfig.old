@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'27/01/2013'</value>
+      <value>'28/01/2013'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -32,16 +32,16 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\Tiffus\IlcyaaDrop\Dropbox\Hearth\flash\Hearth\src</path-element>
+      <path-element>C:\Users\Tiffus\Desktop\EarthBeat\GGJ2013EarthBeat\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>C:\Users\Tiffus\IlcyaaDrop\Dropbox\Hearth\flash\Hearth\lib\starling.swc</path-element>
-      <path-element>C:\Users\Tiffus\IlcyaaDrop\Dropbox\Hearth\flash\Hearth\lib\greensock.swc</path-element>
+      <path-element>C:\Users\Tiffus\Desktop\EarthBeat\GGJ2013EarthBeat\lib\starling.swc</path-element>
+      <path-element>C:\Users\Tiffus\Desktop\EarthBeat\GGJ2013EarthBeat\lib\greensock.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Tiffus\IlcyaaDrop\Dropbox\Hearth\flash\Hearth\src\Main.as</path-element>
+    <path-element>C:\Users\Tiffus\Desktop\EarthBeat\GGJ2013EarthBeat\src\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>60</default-frame-rate>
