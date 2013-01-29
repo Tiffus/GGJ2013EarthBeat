@@ -3,8 +3,8 @@ package
 	import com.greensock.easing.RoughEase;
 	import com.greensock.TweenMax;
 	import levelLoader.LoadLevelDesign;
-	import objects.characters.AbstractChar;
-	import objects.enemy.AbstractEnemy;
+	import objects.characters.character.AbstractChar;
+	import objects.enemies.enemy.AbstractEnemy;
 	import objects.ondes.OndePNG;
 	import starling.display.DisplayObject;
 	

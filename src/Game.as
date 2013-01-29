@@ -2,15 +2,15 @@ package
 {
 	import events.SceneChangeEvent;
 	import levelLoader.LoadLevelDesign;
-	import levels.Credits;
-	import levels.FirstLevel;
-	import levels.Intro;
-	import levels.LastLevel;
-	import levels.Lose;
-	import levels.SecondLevel;
-	import levels.ThirdLevel;
-	import levels.Tuto;
-	import levels.Win;
+	import levels.levels.FirstLevel;
+	import levels.levels.LastLevel;
+	import levels.levels.SecondLevel;
+	import levels.levels.ThirdLevel;
+	import levels.simpleLevels.credits.Credits;
+	import levels.simpleLevels.intro.Intro;
+	import levels.simpleLevels.lose.Lose;
+	import levels.simpleLevels.tuto.Tuto;
+	import levels.simpleLevels.win.Win;
 	import sound.SoundPlayer;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -24,7 +24,6 @@ package
 		private var _actualScene:Sprite;
 		private var _nextScene:Sprite;
 		private var _nextSceneName:String
-		private var _stageContainer:Sprite;
 		
 		public function Game()
 		{
@@ -69,13 +68,12 @@ package
 			{
 				case GlobalContent.SCREEN_TITLE: 
 					_nextScene = new Intro();
-					SoundPlayer.stopAmbiance();
+					SoundPlayer.setLevel(-1);
 					break;
 				case GlobalContent.SCREEN_TUTO: 
 					_nextScene = new Tuto();
-					SoundPlayer.stopAmbiance();
 					break;
-					
+				
 				case GlobalContent.SCREEN_MAIN: 
 					_nextScene = new FirstLevel();
 					SoundPlayer.setLevel(0);
@@ -92,14 +90,14 @@ package
 					_nextScene = new LastLevel();
 					SoundPlayer.setLevel(3);
 					break;
-					
+				
 				case GlobalContent.SCREEN_WIN: 
 					_nextScene = new Win();
-					SoundPlayer.stopAmbiance();
+					SoundPlayer.setLevel(-1);
 					break;
 				case GlobalContent.SCREEN_LOSE: 
 					_nextScene = new Lose();
-					SoundPlayer.stopAmbiance();
+					SoundPlayer.setLevel(-1);
 					break;
 				
 				case GlobalContent.SCREEN_CREDIT: 

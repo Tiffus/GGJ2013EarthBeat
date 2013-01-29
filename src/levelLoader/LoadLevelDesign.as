@@ -2,10 +2,10 @@ package levelLoader
 {
 	import com.greensock.events.LoaderEvent;
 	import com.greensock.loading.XMLLoader;
-	import objects.enemy.AbstractEnemy;
-	import objects.enemy.EnemyFire;
-	import objects.enemy.EnemyGhost;
-	import objects.enemy.EnemySand;
+	import objects.enemies.enemy.AbstractEnemy;
+	import objects.enemies.enemy.EnemyFire;
+	import objects.enemies.enemy.EnemyGhost;
+	import objects.enemies.enemy.EnemySand;
 	import objects.ondes.OndePNG;
 	import starling.events.Event;
 	import starling.events.EventDispatcher;
@@ -38,7 +38,7 @@ package levelLoader
 		
 		public function xmlLoaded(e:LoaderEvent):void
 		{
-			trace( "LoadLevelDesign.xmlLoaded > e : " + e );
+			trace("LoadLevelDesign.xmlLoaded > e : " + e);
 			myXMLFile = new XML((e.currentTarget as XMLLoader).content);
 			GlobalContent.mainXML = myXMLFile;
 			
@@ -79,7 +79,8 @@ package levelLoader
 						enemy = new EnemyGhost(obj.attribute("id"), obj.attribute("type"), obj.attribute("position"));
 						GlobalContent.enemiesVector.push(enemy);
 						
-					}else if (obj.attribute("type") == 3)
+					}
+					else if (obj.attribute("type") == 3)
 					{
 						enemy = new EnemySand(obj.attribute("id"), obj.attribute("type"), obj.attribute("position"));
 						GlobalContent.enemiesVector.push(enemy);

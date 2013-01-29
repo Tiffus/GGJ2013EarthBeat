@@ -1,5 +1,6 @@
 package objects
 {
+	import objects.enemies.Enemies;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.textures.Texture;

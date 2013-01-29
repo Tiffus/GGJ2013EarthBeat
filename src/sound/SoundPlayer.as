@@ -38,7 +38,7 @@ package sound
 		private static const AmbianceLead:Class;
 		
 		private static var Ambiances:Array = new Array();
-		private static const Ambiancess:Array = new Array(new Array(), new Array(AmbianceLead, AmbianceDesert, AmbianceBass1), new Array(AmbianceLead, AmbianceJungle, AmbianceBass1, AmbianceBass2), new Array(AmbianceLead, AmbianceBeach, AmbianceBass1, AmbianceBass2, AmbianceBass3), new Array(AmbianceLead, AmbianceBass3), new Array());
+		private static const Ambiancess:Array = new Array(new Array(AmbianceLead), new Array(AmbianceLead, AmbianceDesert, AmbianceBass1), new Array(AmbianceLead, AmbianceJungle, AmbianceBass1, AmbianceBass2), new Array(AmbianceLead, AmbianceBeach, AmbianceBass1, AmbianceBass2, AmbianceBass3), new Array(AmbianceLead, AmbianceBass3), new Array());
 		private static const AmbianceChannels:Array = new Array(5);
 		private static var AmbienceIndex:int = 0;
 		

@@ -2,8 +2,8 @@ package objects
 {
 	import starling.core.RenderSupport;
 	import starling.display.Image;
-	import starling.display.MovieClip;
 	import starling.display.Sprite;
+	import starling.events.Event;
 	import starling.textures.Texture;
 	
 	/**
@@ -12,35 +12,45 @@ package objects
 	 */
 	public class Core extends Sprite
 	{
-		private var _mc:MovieClip;
-		private var image:Image;
+		private var _top:Number = 1;
+		private var _image:Image;
+		private var _texture:Texture;
 		
 		public function Core()
 		{
 			_init();
+			addEventListener(Event.REMOVED_FROM_STAGE, _onRemovedFromStage);
+		}
+		
+		private function _onRemovedFromStage(e:Event):void
+		{
+			removeEventListener(Event.REMOVED_FROM_STAGE, _onRemovedFromStage);
+			
+			_image.dispose();
+			_image = null;
+			_texture.dispose();
+			_texture = null;
 		}
 		
 		private function _init():void
 		{
-			var texture:Texture = Texture.fromBitmap(new Assets.coreImg());
-			image = new Image(texture);
+			_texture = Texture.fromBitmap(new Assets.coreImg());
+			_image = new Image(_texture);
 			
-			addChild(image);
+			addChild(_image);
 			
-			
-			image.x = -(texture.width >> 1)*image.scaleX;
-			image.y = -(texture.height >> 1)*image.scaleY +20;
+			_image.x = -(_texture.width >> 1) * _image.scaleX;
+			_image.y = -(_texture.height >> 1) * _image.scaleY + 20;
 		
-			//image.scaleX = image.scaleY = 2;
 		}
-		private var top:Number = 1;
+		
 		override public function render(support:RenderSupport, parentAlpha:Number):void
 		{
 			super.render(support, parentAlpha);
 			
 			this.rotation += 0.01;
-			top += 0.01;
-			this.scaleX = this.scaleY = Math.abs(Math.cos(top))+1;
+			_top += 0.01;
+			this.scaleX = this.scaleY = Math.abs(Math.cos(_top)) + 1;
 		}
 	
 	}
